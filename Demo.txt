@@ -1,0 +1,7 @@
+Hello guys!
+
+This is just a simple .txt to try GitHub's functionalities.
+Please Make jour own copy of this project, add some random lines and then make a pull request!
+
+have fun,
+J  a  c  k
