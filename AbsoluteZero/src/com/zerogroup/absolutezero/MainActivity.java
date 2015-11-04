@@ -1,4 +1,4 @@
- package com.zerogroup.absolutezero;
+package com.zerogroup.absolutezero;
 
 import android.app.Activity;
 import android.os.Bundle;
