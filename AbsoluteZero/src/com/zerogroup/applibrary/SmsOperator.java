@@ -1,4 +1,4 @@
-package com.zerogroup.absolutezero;
+package com.zerogroup.applibrary;
 
 import java.util.HashMap;
 import java.util.Map;
