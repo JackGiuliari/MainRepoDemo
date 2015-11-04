@@ -1,7 +1,7 @@
 Hello guys!
 
 This is just a simple .txt to try GitHub's functionalities.
-Please Make jour own copy of this project, add some random lines and then make a pull request!
+Please Make your own copy of this project, add some random lines and then make a pull request!
 
 have fun,
 J  a  c  k
@@ -18,7 +18,7 @@ I'm back again to tell you that my english isn't very good
 
 Cya,
 Query
-
+Ivan
 
 Guys!,
 Singh
