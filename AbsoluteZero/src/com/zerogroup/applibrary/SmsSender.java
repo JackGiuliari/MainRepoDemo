@@ -19,7 +19,7 @@ public class SmsSender {
 	 * Sends message to given address.
 	 * 
 	 * @param address
-	 *            Addressto which the message has to be sent.
+	 *            Address to which the message has to be sent.
 	 * @param message
 	 *            Message to send.
 	 */

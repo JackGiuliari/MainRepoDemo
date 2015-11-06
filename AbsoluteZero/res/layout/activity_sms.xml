@@ -15,16 +15,14 @@
         android:layout_height="wrap_content"
         android:text="SMS ACTIVITY" />
     
-    <TextView 
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/smsFrom"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="@string/sms_from"
         android:textColor="#2979FF"
-
-        />
+        android:textStyle="bold" />
     
     <TextView 
          android:layout_width="wrap_content"
@@ -32,16 +30,14 @@
          android:id="@+id/address"
         />
     
-    <TextView 
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/smsMessage"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="@string/sms_message"
         android:textColor="#2979FF"
-
-        />
+        android:textStyle="bold" />
     
     <TextView 
          android:layout_width="wrap_content"
