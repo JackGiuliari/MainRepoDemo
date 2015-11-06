@@ -7,59 +7,61 @@ import java.util.Scanner;
 import android.telephony.SmsManager;
 import android.util.Log;
 
+/**
+ * This class is made with the purpose of linking SmsBroadcastReceiver and StringResponse.
+ * Its aim is to get as parameters the address and the content of a SMS message and then send the automatic response SMS.
+ * 
+ * @author Giac
+ *
+ */
 public class SmsOperator {
 
 	private String smsText;
-	private String smsAdress;
+	private String smsAddress;
 	private Map<String, Integer> actions;
+	private static boolean enabled;
+	private static final String TAG = "OPERATOR";
 	
-	public SmsOperator(String anAdress, String aText){
-		
-		smsAdress = anAdress;
+	public SmsOperator(String anAddress, String aText){
 		smsText = aText;
+		smsAddress = anAddress;
+		enabled = true;	//default value
 		
-		actions = new HashMap<String, Integer>();
-		
-		//possible actions setup
-		actions.put("toast", 1);
-		actions.put("hate", 2);
 	}
 	
-	public int findAction(){
-		String action = "";
-		Scanner scan = new Scanner(smsText);
+	public SmsOperator(){
+		smsText = "";
+		smsAddress = "";
+		enabled = true;	//default value
 		
-		while(scan.hasNext()){
-			String temp = scan.next();
-			if(actions.containsKey(temp))
-					return actions.get(temp).intValue();
-		}
-		
-		return -1;	//no action found;
 	}
 	
 	public void operateSms(){
-		int action = this.findAction();
-		
-		if(action > 0){
-		
-		String message = "";
-		
-		switch (action){
-		case 1: message = "Hello man";
-			break;
-		case 2: message = "Maledetto!";
-			break;
+		StringResponse res = new StringResponse(smsText);
+		res.addResponse("ciao", "hello");
+		res.addResponse("white", "riot");
+
+		String[] resToBeSent = res.findResponse();
+		if (resToBeSent != null) {
+			SmsSender sender = new SmsSender(smsAddress, resToBeSent);
+			Log.d(TAG, "responses sent");
+		} else {
+			Log.d(TAG, "no responses");
 		}
-		
-		SmsManager manager = SmsManager.getDefault();
-		
-		manager.sendTextMessage(smsAdress, null, message, null, null);
-		
-		Log.d("OPERATOR", "sent message");
-		}
-		
-		Log.d("OPERATOR", "nothing to operate on");
+	}
+
+	public static void enableSms() {
+		enabled = true;
+		Log.d(TAG, "Sms Operator Enabled");
+	}
+	
+	public static void disableSms(){
+		enabled = false;
+		Log.d(TAG, "Sms Operator Enabled");
+	}
+	
+	public static boolean isEnabled(){
+		return enabled;
 	}
 	
 }

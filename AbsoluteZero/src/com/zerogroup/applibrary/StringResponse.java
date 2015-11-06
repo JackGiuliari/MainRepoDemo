@@ -36,7 +36,7 @@ public class StringResponse {
 	 * 
 	 * @return an Object array containing all the "response" strings that were found.
 	 */
-	public Object[] findResponse() {
+	public String[] findResponse() {
 		List<String> toReply = new ArrayList<String>();
 		Scanner scan = new Scanner(myString);
 
@@ -47,7 +47,18 @@ public class StringResponse {
 		}
 
 		scan.close();
-		return toReply.toArray();
+		
+		if (toReply.isEmpty()) {
+			return null;
+		}
+		
+		Object[] objectReplies = toReply.toArray();
+		String[] stringReplies = new String[objectReplies.length];
+		for (int i = 0; i < stringReplies.length; i++) {
+			stringReplies[i] = (String) objectReplies[i];
+		}
+
+		return stringReplies;
 	}
 
 	/**
