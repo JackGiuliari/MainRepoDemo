@@ -27,16 +27,16 @@ public class StringResponse {
 	 *            the String on which the class will operate.
 	 */
 	public StringResponse(String aString) {
-		myString = aString;
+		myString = aString.toLowerCase();	//change to lower case, triggers are not case sensitive!!!
 		myResponses = new HashMap<String, String>();
 	}
 
 	/**
 	 * Finds the strings saved as "triggers" inside the given string.
 	 * 
-	 * @return an array containing all the "response" strings that were found.
+	 * @return an Object array containing all the "response" strings that were found.
 	 */
-	public String[] findResponse() {
+	public Object[] findResponse() {
 		List<String> toReply = new ArrayList<String>();
 		Scanner scan = new Scanner(myString);
 
@@ -47,7 +47,7 @@ public class StringResponse {
 		}
 
 		scan.close();
-		return (String[]) toReply.toArray();
+		return toReply.toArray();
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class StringResponse {
 	 *         present)
 	 */
 	public String addResponse(String trigger, String response) {
-		return (String) myResponses.put(trigger, response);
+		return (String) myResponses.put(trigger.toLowerCase(), response);	//all triggers are lower case
 	}
 
 	/**
