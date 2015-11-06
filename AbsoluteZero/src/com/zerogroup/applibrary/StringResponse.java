@@ -40,6 +40,12 @@ public class StringResponse {
 		List<String> toReply = new ArrayList<String>();
 		Scanner scan = new Scanner(myString);
 
+		while (scan.hasNext()) {
+			String temp = scan.next();
+			if (myResponses.containsKey(temp))
+				toReply.add(myResponses.get(temp));
+		}
+
 		scan.close();
 		return (String[]) toReply.toArray();
 	}
