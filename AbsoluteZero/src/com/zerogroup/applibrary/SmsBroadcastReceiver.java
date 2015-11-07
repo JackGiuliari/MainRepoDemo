@@ -2,8 +2,6 @@ package com.zerogroup.applibrary;
 
 import com.zerogroup.absolutezero.R;
 import com.zerogroup.absolutezero.SmsActivity;
-import com.zerogroup.absolutezero.R.drawable;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -38,6 +36,8 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
 			
 			SmsOperator operator = new SmsOperator(smsAddress, smsText);
 			operator.operateSms();
+			
+			Log.d("BroadcastRECEIVER", "Operated");
 			
 			//create intent
 			Intent smsActivityIntent = new Intent(context, SmsActivity.class);

@@ -34,7 +34,6 @@ public class SmsOperator {
 			if(actions.containsKey(temp))
 					return actions.get(temp).intValue();
 		}
-		
 		return -1;	//no action found;
 	}
 	
