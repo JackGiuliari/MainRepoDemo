@@ -5,7 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sms">SmsActivity</string>
-    <string name="smsFrom">SMS sent by:</string>
-    <string name="smsMessage">Message:</string>
+    <string name="sms_from">SMS sent by:</string>
+    <string name="sms_message">Message:</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="enable_mail">Abilita Mail</string>
+    <string name="enable_notification">Abilita notifiche</string>
+    <string name="enable_sms">Abilita sms</string>
 
 </resources>

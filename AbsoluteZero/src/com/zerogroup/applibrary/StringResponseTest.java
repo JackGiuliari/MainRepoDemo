@@ -14,7 +14,7 @@ public class StringResponseTest {
 		responder.addResponse("WhITe", "RIOT!");
 		Object[] responses = responder.findResponse();
 		String testRight = "RIOT!";
-		
+
 		assertEquals(testRight, responses[0]);
 		
 		
