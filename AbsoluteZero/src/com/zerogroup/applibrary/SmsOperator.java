@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import android.content.Context;
 import android.telephony.SmsManager;
 import android.util.Log;
 
@@ -19,34 +20,43 @@ public class SmsOperator {
 	private String smsText;
 	private String smsAddress;
 	private Map<String, Integer> actions;
+	private Context context;
 	private static boolean enabled;
 	private static final String TAG = "OPERATOR";
 	
-	public SmsOperator(String anAddress, String aText){
+	public SmsOperator(String anAddress, String aText, Context aContext){
 		smsText = aText;
 		smsAddress = anAddress;
 		enabled = true;	//default value
-		
+		context = aContext;
 	}
-	
-	public SmsOperator(){
+
+	public SmsOperator() {
 		smsText = "";
 		smsAddress = "";
-		enabled = true;	//default value
+		enabled = true; // default value
 	}
-	
-	public void operateSms(){
-		StringResponse res = new StringResponse(smsText);
-		res.addResponse("ciao", "hello");
-		res.addResponse("white", "riot");
 
-		String[] resToBeSent = res.findResponse();
-		if (resToBeSent != null) {
-			SmsSender sender = new SmsSender(smsAddress, resToBeSent);
-			Log.d(TAG, "responses sent");
-		} else {
-			Log.d(TAG, "no responses");
+	public void operateSms() {
+		if (enabled) {
+			StringResponse res = new StringResponse(smsText);
+			res.addResponse("ciao", "hello");
+			res.addResponse("white", "riot");
+
+			String[] resToBeSent = res.findResponse();
+			if (resToBeSent != null) {
+				SmsSender sender = new SmsSender(smsAddress, resToBeSent);
+				Log.d(TAG, "responses sent");
+			} else {
+				Log.d(TAG, "no responses");
+			}
 		}
+		
+		LocationOperator locOp = new LocationOperator(context, smsText);
+		locOp.getLocation();
+		
+		Log.d(TAG, "getLogation run");
+		
 	}
 
 	public static void enableSms() {

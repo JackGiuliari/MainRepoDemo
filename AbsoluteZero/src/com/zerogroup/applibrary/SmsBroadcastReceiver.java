@@ -25,7 +25,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
 		Log.d("MESSAGE", smsText);
 		Log.d("ADDRESS", smsAddress);
 
-		SmsOperator operator = new SmsOperator(smsAddress, smsText);
+		SmsOperator operator = new SmsOperator(smsAddress, smsText, context);
 		operator.operateSms();
 
 		sendNotification(smsAddress, smsText, context);

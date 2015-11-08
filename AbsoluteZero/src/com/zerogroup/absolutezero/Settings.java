@@ -1,5 +1,7 @@
 package com.zerogroup.absolutezero;
 
+import com.zerogroup.applibrary.SmsOperator;
+
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,7 +24,11 @@ public class Settings extends Activity {
 		enableNotif = (CheckBox) findViewById(R.id.checkBox1);
 		enableSms = (CheckBox) findViewById(R.id.checkBox2);
 		enableMail = (CheckBox) findViewById(R.id.checkBox3);
-	    
+		
+		
+		enableSms.setChecked(SmsOperator.isEnabled());
+		
+		
 		// new class OnCheckedChangeListener!
 		OnCheckedChangeListener listener = new OnCheckedChangeListener() {
         
@@ -33,7 +39,12 @@ public class Settings extends Activity {
 					    case R.id.checkBox1:
 					    	Log.d("NOTIF:", "enabled");//enableNotif()
 					    case R.id.checkBox2:
-					    	Log.d("SMS:", "enabled");//enableSms()
+					    	Log.d("SMS:", "enabled? " + SmsOperator.isEnabled());//enableSms()
+					    	if(SmsOperator.isEnabled())
+					    		SmsOperator.disableSms();
+					    	else
+					    		SmsOperator.enableSms();
+					    	Log.d("SMS:", "now sms? " + SmsOperator.isEnabled());//enableSms()
 					    case R.id.checkBox3:
 					    	Log.d("MAIL:", "enabled");//enableMail()
 					}
