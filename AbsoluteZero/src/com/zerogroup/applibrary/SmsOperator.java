@@ -7,10 +7,12 @@ import java.util.Scanner;
 import android.content.Context;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
- * This class is made with the purpose of linking SmsBroadcastReceiver and StringResponse.
- * Its aim is to get as parameters the address and the content of a SMS message and then send the automatic response SMS.
+ * This class is made with the purpose of linking SmsBroadcastReceiver and
+ * StringResponse. Its aim is to get as parameters the address and the content
+ * of a SMS message and then send the automatic response SMS.
  * 
  * @author Giac
  *
@@ -23,11 +25,11 @@ public class SmsOperator {
 	private Context context;
 	private static boolean enabled;
 	private static final String TAG = "OPERATOR";
-	
-	public SmsOperator(String anAddress, String aText, Context aContext){
+
+	public SmsOperator(String anAddress, String aText, Context aContext) {
 		smsText = aText;
 		smsAddress = anAddress;
-		enabled = true;	//default value
+		enabled = true; // default value
 		context = aContext;
 	}
 
@@ -51,26 +53,30 @@ public class SmsOperator {
 				Log.d(TAG, "no responses");
 			}
 		}
-		
-		LocationOperator locOp = new LocationOperator(context, smsText);
-		locOp.getLocation();
-		
-		Log.d(TAG, "getLogation run");
-		
+
+		LocationOperator locOp = new LocationOperator(context, smsText, smsAddress);
+		String location = locOp.getLocation();
+		if (location != null) {
+			SmsSender sender = new SmsSender(smsAddress, location);
+		}
+		if(locOp.isLocationMessage()){
+			locOp.showLocationOnGoogleMaps();
+		}
+
 	}
 
 	public static void enableSms() {
 		enabled = true;
 		Log.d(TAG, "Sms Operator Enabled");
 	}
-	
-	public static void disableSms(){
+
+	public static void disableSms() {
 		enabled = false;
 		Log.d(TAG, "Sms Operator Enabled");
 	}
-	
-	public static boolean isEnabled(){
+
+	public static boolean isEnabled() {
 		return enabled;
 	}
-	
+
 }

@@ -11,5 +11,7 @@
     <string name="enable_mail">Abilita Mail</string>
     <string name="enable_notification">Abilita notifiche</string>
     <string name="enable_sms">Abilita sms</string>
+    <string name="cancel">Cancel</string>
+    <string name="open_settings">Open settings</string>
 
 </resources>
